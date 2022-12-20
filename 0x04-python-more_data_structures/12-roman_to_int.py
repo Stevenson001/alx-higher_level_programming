@@ -1,32 +1,40 @@
 #!/usr/bin/python3
-
-
 def roman_to_int(roman_string):
-    if not isinstance(roman_string, str) or roman_string is None:
+    """
+    Function to return the integer value of a number in roman numerals..
+
+    Parameters:
+        roman_string: String containing the roman numerals.
+
+    Return:
+        0 if argument is not a string or None.
+    """
+
+    try:
+        roman_string = roman_string.upper()
+    except AttributeError:
         return 0
-    rom_to_int = {
-            "I": 1,
-            "V": 5,
-            "X": 10,
-            "L": 50,
-            "C": 100,
-            "D": 500,
-            "M": 1000
-            }
 
-    # roman_string = roman_string.replace("IV", "IIII").replace("IX", "VIIII")
-    # roman_string = roman_string.replace("XL", "XXXX").replace("XC", "LXXXX")
-    # roman_string = roman_string.replace("CD", "CCCC").replace("CM", "DCCCC")
+    roman_dict = \
+        {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    jump = False
+    value = 0
 
-    num = 0
-    _len = len(roman_string)
+    for idx in range(len(roman_string) - 1, -1, -1):
+        if jump:
+            jump = False
+            continue
 
-    for i in range(_len):
-        if not rom_to_int.get(roman_string[i]):
-            return 0
-        value = rom_to_int[roman_string[i]]
-        if i != _len - 1 and rom_to_int[roman_string[i + 1]] > value:
-            num -= value
-        else:
-            num += value
-    return num
+        if roman_string[idx] in roman_dict.keys():
+            curr_num = roman_dict[roman_string[idx]]
+            left_num = roman_dict[roman_string[idx - 1]]
+
+            if idx == 0:
+                left_num = 1001
+            if curr_num > left_num:
+                jump = True
+                value += (curr_num - left_num)
+            else:
+                value += curr_num
+
+    return value

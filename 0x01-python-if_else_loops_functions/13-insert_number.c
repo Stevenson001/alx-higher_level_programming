@@ -1,54 +1,53 @@
 #include "lists.h"
-#include <stdlib.h>
 
 /**
- * insert_node - inserts a node into sorted linked-list
- * @head: a pointer to the linked list to work with
- * @number: the int to add into the linked list
+ * insert_node - Inserts a number into a sorted singly linked list.
+ * @head: Address of head pointer.
+ * @number: Integer to insert in list.
  *
- * Return: the address of the new node or NULL if it failed
+ * Return: The address of the new node, or NULL if failed.
  */
-
 listint_t *insert_node(listint_t **head, int number)
 {
-	listint_t *node, *temp;
+	listint_t *temp = NULL, *newNode = NULL, *tempNode = NULL;
 
-	if (!head)
-		return (NULL);
-
-	node = malloc(sizeof(*node));
-	if (node == NULL)
+	newNode = malloc(sizeof(*newNode));
+	if (!newNode || !head)
 	{
-		free(node);
+		if (newNode)
+			free(newNode);
 		return (NULL);
 	}
 
-	node->n = number;
-	node->next = NULL;
-	
-	if (!(*head))
+	newNode->n = number;
+	newNode->next = NULL;
+	if (!*head)
 	{
-		*head = node;
-		return (*head);
+		*head = newNode;
+		return (newNode);
 	}
 
-	temp = *head;
-
-	while (temp->next != NULL)
+	if ((*head)->n > number)
 	{
-		if (temp->next->n > node->n)
+		newNode->next = *head;
+		*head = newNode;
+		return (newNode);
+	}
+	for (temp = *head; temp; temp = temp->next)
+	{
+		if (!temp->next)
 		{
-			listint_t *temp1 = temp->next;
-			temp->next = node;
-			node->next = temp1;
-			return (*head);
+			temp->next = newNode;
+			break;
 		}
-
-		temp = temp->next;
+		if (temp->next->n > number)
+		{
+			tempNode = temp->next;
+			temp->next = newNode;
+			newNode->next = tempNode;
+			return (newNode);
+		}
 	}
-
-	temp->next = node;
-
-	return (*head);
+	return (newNode);
 }
 

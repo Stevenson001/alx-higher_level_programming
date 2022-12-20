@@ -1,11 +1,16 @@
 #!/usr/bin/python3
-
-
 def multiple_returns(sentence):
-    if not sentence:
-        tup = 0, None
-        return tup
+    """
+    Function to get length of a string and first character.
 
-    tup = len(sentence), sentence[0]
+    Args:
+        sentence: String to get character and length from
 
-    return tup
+    Returns:
+        Length of sentence and first character as tuple
+    """
+
+    strLen = len(sentence)
+    if strLen > 0:
+        return strLen, sentence[0]
+    return strLen, None

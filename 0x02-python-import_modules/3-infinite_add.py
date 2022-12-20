@@ -1,18 +1,14 @@
 #!/usr/bin/python3
-from sys import argv
 
+# Adds all whole numbers passed as command line arguments to the program
+def simp_add_arg():
+    from sys import argv
 
-def main():
-    sum = 0
-    argc = len(argv) - 1
-
-    if argc == 0:
-        print("{}".format(argc))
-    else:
-        for item in range(1, argc + 1):
-            sum += int(argv[item])
-        print("{}".format(sum))
+    result = 0
+    for num in argv[1:]:
+        result += int(num)
+    print(result)
 
 
 if __name__ == "__main__":
-    main()
+    simp_add_arg()

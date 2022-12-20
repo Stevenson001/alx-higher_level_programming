@@ -1,14 +1,21 @@
 #!/usr/bin/python3
-
-
 def search_replace(my_list, search, replace):
-    if not my_list:
-        return []
+    """
+    Function to replace an item in a list with another.
 
-    new_list = my_list[:]
+    Parameters:
+        my_list: List to search for item in.
+        search: Item to replace.
+        replace: Item to replace with.
 
-    for i in range(len(new_list)):
-        if new_list[i] == search:
-            new_list[i] = replace
+    Return:
+        A new list with the new item.
+    """
+
+    new_list = my_list.copy()
+    for idx in range(len(my_list)):
+        if new_list[idx] is search:
+            new_list.pop(idx)
+            new_list.insert(idx, replace)
 
     return new_list

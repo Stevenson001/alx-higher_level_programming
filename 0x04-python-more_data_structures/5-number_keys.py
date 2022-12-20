@@ -1,19 +1,6 @@
 #!/usr/bin/python3
-
-
 def number_keys(a_dictionary):
-    if a_dictionary is None:
-        return None
+    """Function that returns the number of keys in a dictionary.
+    """
 
-    i = 0
-
-    for item in a_dictionary.keys():
-        i += 1
-
-    return i
-
-
-'''
-You can also use len(a_dictionary).
-I just like custom functions for som weird reason
-'''
+    return len(a_dictionary.keys())

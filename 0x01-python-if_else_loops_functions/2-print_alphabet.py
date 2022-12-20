@@ -1,3 +1,5 @@
 #!/usr/bin/python3
-for i in range(97, 123):
-    print("{}".format(chr(i)), end='')
+
+# Prints the ASCII alphabet in lowercase
+for alpha in range(97, 123):
+    print("{:c}".format(alpha), end='')

@@ -1,13 +1,18 @@
 #!/usr/bin/python3
-
-
 def no_c(my_string):
-    new_string = ''
+    """
+    Removes all characters c and C from a string.
 
-    for c in my_string:
-        if c == 'c' or c == 'C':
+    Args:
+        my_string: String to operate on
+
+    Returns:
+        new string
+    """
+
+    newString = ""
+    for i in my_string:
+        if i in "Cc":
             continue
-        else:
-            new_string += c
-
-    return new_string
+        newString += i
+    return newString

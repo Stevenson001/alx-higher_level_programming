@@ -1,2 +1,4 @@
-Second project on python: if/else/loops and functions
-This repo contains practice files on the following topics listed above.
+# Python - if/else, loops, functions
+***
+A project with tasks that help strengthen knowledge of Python by working with loops and conditional statements.
+***

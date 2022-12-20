@@ -1,17 +1,25 @@
 #!/usr/bin/python3
-
-
 def add_tuple(tuple_a=(), tuple_b=()):
-    if not tuple_a:
-        tuple_a = 0, 0
-    if not tuple_b:
-        tuple_b = 0, 0
+    """
+    Function to add two tuples assuming only integers in tuples.
 
-    if len(tuple_a) == 1:
-        tuple_a = tuple_a[0], 0
-    if len(tuple_b) == 1:
-        tuple_b = tuple_b[0], 0
+    If a tuple is smaller than 2, value of 0 is used for each missing integer
+    If a tuple is bigger than 2, first 2 integers are used.
 
-    new_tuple = tuple_a[0] + tuple_b[0], tuple_a[1] + tuple_b[1]
+    Args:
+        tuple_a: First tuple
+        tuple_b: Second tuple
 
-    return new_tuple
+    Returns:
+        Tuple with 2 integers with first argument being the addition of the
+        first element of each tuple_a and tuple_b, and second element being the
+        addition of the second arguments of tuple_a and tuple_b
+    """
+
+    new_a = tuple_a + (0, 0)
+    new_b = tuple_b + (0, 0)
+
+    firstElement = new_a[0] + new_b[0]
+    secElement = new_a[1] + new_b[1]
+
+    return firstElement, secElement

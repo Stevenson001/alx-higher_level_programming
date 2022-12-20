@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 
+# Removes a character at a specified index n
 def remove_char_at(str, n):
-    s = ""
+    strCopy = ""
     for i in range(len(str)):
         if i == n:
             continue
-        s += str[i]
-    return s
+        strCopy += str[i]
+    return strCopy

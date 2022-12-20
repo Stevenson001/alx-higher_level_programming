@@ -1,24 +1,16 @@
 #!/usr/bin/python3
 import random
+
+# Gives details about the last digit of a number
 number = random.randint(-10000, 10000)
-flag = 0
-
+lastDigit = abs(number) % 10
 if number < 0:
-    number *= -1
-    flag = 1
+    lastDigit *= -1
+if lastDigit > 5:
+    message = "and is greater than 5"
+elif lastDigit == 0:
+    message = "and is 0"
+elif lastDigit < 6 and not 0:
+    message = "and is less than 6 and not 0"
 
-last_digit = number % 10
-
-if flag:
-    last_digit *= -1
-    number *= -1
-
-if last_digit > 5:
-    print(f"Last digit of {number} is {last_digit} and is greater than 5")
-
-elif last_digit == 0:
-    print(f"Last digit of {number} is {last_digit} and is 0")
-
-elif last_digit < 6 and last_digit != 0:
-    print(f"Last digit of {number} is {last_digit} and is \
-less than 6 and not 0")
+print("Last digit of {:d} is {:d} {}".format(number, lastDigit, message))

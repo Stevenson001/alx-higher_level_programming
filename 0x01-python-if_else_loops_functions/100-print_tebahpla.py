@@ -1,11 +1,6 @@
 #!/usr/bin/python3
 
-s = ""
-i = ord('z')
-while i >= ord('a'):
-    if i % 2:
-        s += chr(i - 32)
-    else:
-        s += chr(i)
-    i -= 1
-print("{0}".format(s), end='')
+# Prints ASCII alphabet in reverse order, alternating lower and uppercase
+for alpha in range(122, 96, -1):
+    print("{:c}".format(alpha) if alpha % 2 == 0
+          else "{:c}".format(alpha - 32), end='')

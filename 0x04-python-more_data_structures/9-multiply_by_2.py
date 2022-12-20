@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-
-
 def multiply_by_2(a_dictionary):
-    new_dictionary = a_dictionary.copy()
+    """Multiplies the integer value of every key in a new dictionary
+    """
 
-    for key in new_dictionary:
-        new_dictionary[key] = new_dictionary[key] * 2
-    return new_dictionary
+    new_dict = a_dictionary.copy()
+    for k, v in new_dict.items():
+        new_dict[k] = v * 2
+
+    return new_dict

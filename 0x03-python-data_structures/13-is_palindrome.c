@@ -1,67 +1,62 @@
 #include "lists.h"
-#include <stdlib.h>
 
 /**
- * reverse - reverses a linked list
- * @head: head of the linked list
- * Return: the head of the reversed linked list
+ * is_palindrome - Checks for palindrome in listint_t singly linked list.
+ * @head: Address of head pointer
+ *
+ * Return: 1 if list is a palindrome, 0 otherwise
  */
-
-listint_t *reverse(listint_t *head)
+int is_palindrome(listint_t **head)
 {
-	listint_t *temp, *prev, *next;
+	listint_t *temp = NULL;
+	int *buff, beg, end, len = 0, idx = 0, reval = 0;
 
-	temp = head;
-	prev = NULL;
-	while (temp != NULL)
+	if (head)
 	{
-		next = temp->next;
-		temp->next = prev;
-		prev = temp;
-		temp = next;
-	}
-	temp = prev;
+		if (*head)
+		{
+			for (temp = *head; temp; temp = temp->next)
+				len++;
 
-	return (prev);
+			buff = malloc(sizeof(int) * len);
+			if (!buff)
+			{
+				write(2, "Could not check list", 20);
+				return (FAIL); /* should call exit() but not allowed */
+			}
+
+			for (temp = *head; temp; temp = temp->next)
+				buff[idx++] = temp->n;
+			beg = 0;
+			end = idx - 1;
+			reval = check_match(&buff[beg], &buff[end]);
+			free(buff);
+			if (!reval)
+				return (NO_PAL);
+		}
+		return (PAL);
+	}
+	return (NO_PAL);
 }
 
 /**
- * is_palindrome - checks if a linked list is a palindrome
- * @head: pointer to a pointer to the head of the list
+ * check_match - Checks if integers in alternate positions in an address match
+ * @big: Pointer to beginning address as at last function call.
+ * @end: Pointer to ending address as at last function call.
  *
- * Return: 0 if it is not a palindrome
- * 	1 if it is a palindrome
+ * Return: Returns 0 if not matching, 1 if matching.
  */
-
-int is_palindrome(listint_t **head)
+int check_match(int *big, int *end)
 {
-	listint_t *temp, *fast, *slow, *nhead;
-
-	if (!head)
-		return (-1);
-
-	if (!(*head))
-		return (1);
-
-	slow = *head;
-	fast = *head;
-
-	while (slow && fast && fast->next)
+	if (big < end)
 	{
-		slow = slow->next;
-		fast = fast->next->next;
-	}
-
-	nhead = reverse(slow);
-	temp = *head;
-
-	while (nhead != NULL)
-	{
-		if (nhead->n != temp->n)
+		if (*(big) == *(end))
+			return (check_match(++big, --end));
+		else
 			return (0);
-		temp = temp->next;
-		nhead = nhead->next;
 	}
-
-	return (1);
+	else
+	{
+		return (1);
+	}
 }

@@ -1,10 +1,7 @@
 #!/usr/bin/python3
-
-
 def print_sorted_dictionary(a_dictionary):
-    if not a_dictionary:
-        return
-    keys = sorted(a_dictionary)
+    """Prints a dictionary by ordered keys where all keys are strings.
+    """
 
-    for key in keys:
-        print("{}: {}".format(key, a_dictionary.get(key)))
+    if a_dictionary:
+        [print("{}: {}".format(k, v)) for k, v in sorted(a_dictionary.items())]
