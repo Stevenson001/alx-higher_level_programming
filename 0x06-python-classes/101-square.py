@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""A module that has definition of a class Square"""
+"""A module with definition of a class `Square`"""
 
 
 class Square:
@@ -21,7 +21,10 @@ class Square:
 
     @property
     def size(self):
-        """:obj:`int`: Current size of the square"""
+        """:obj:`int`: Current size of the square
+
+        The setter method raises an exception if the value is not int or < 0
+        """
         return self.__size
 
     @size.setter
@@ -36,6 +39,8 @@ class Square:
     @property
     def position(self):
         """:obj:`tuple` of :obj:`int`: index 0 sets spaces and 1 sets newline
+
+        The setter method raises an exception of ValueError or TypeError
         """
         return self.__position
 
@@ -53,6 +58,25 @@ class Square:
                 print()
             for i in range(self.__size):
                 print(" " * self.__position[0] + "#" * self.__size)
+
+    def __str__(self):
+        """Returns the square made using `#` signs"""
+
+        sq_str = ""
+        if self.__size == 0:
+            return sq_str
+        else:
+            x, y = self.__position
+
+            for _ in range(y):
+                sq_str = sq_str + "\n"
+
+            for _ in range(self.__size):
+                if x:
+                    sq_str = sq_str + (' ' * x)
+                sq_str += ('#' * self.__size) + '\n'
+            sq_str = sq_str[:-1]
+            return sq_str
 
     @staticmethod
     def check_size(size):

@@ -63,3 +63,17 @@ Error and exception handling during during programme run. [click](https://github
 Learning about Object Oriented Programming (OOB) in Python. [click](https://github.com/chee-zaram/alx-higher_level_programming/tree/main/0x06-python-classes)
 
 ---
+
+## Python - More Classes and Objects
+
+---
+
+Contains more advanced tasks with regards to implementing and using classes and objects in Python. [click]()
+
+---
+
+## Python - Everything is Object
+
+---
+
+Understanding fundamentally how everything in Python works as an object. [click]()
